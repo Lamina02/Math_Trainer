@@ -1,0 +1,110 @@
+	private void WriteConfig2(string filename)
+        {
+            // Create a new file in the current directory  
+            System.Xml.XmlTextWriter textWriter = new System.Xml.XmlTextWriter(filename, null);
+
+            // Opens the document  
+            textWriter.WriteStartDocument();
+
+            // Write comments
+            textWriter.WriteComment("Config Saved per " + DateTime.Today.ToString("dd.MM.yyyy") + ".");
+
+            // Write first element
+            textWriter.WriteStartElement("TrainerConfig");
+            textWriter.WriteStartElement("r", "RECORD", "urn:record");
+            
+            
+            // Write element Calculation Types
+            textWriter.WriteStartElement("CalculationTypes"); // start Calculation Types
+
+            textWriter.WriteStartElement("UsingAddition", "");
+            textWriter.WriteString(Handler.UsingAddition.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteStartElement("UsingSubstraction", "");
+            textWriter.WriteString(Handler.UsingSubtraction.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteStartElement("UsingMultiplication", "");
+            textWriter.WriteString(Handler.UsingMultiplication.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteStartElement("UsingDivision", "");
+            textWriter.WriteString(Handler.UsingDivision.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteEndElement(); // end CalculationTypes
+
+
+            // Write element Spectrum
+            textWriter.WriteStartElement("Spectrum"); // start Spectrum
+            textWriter.WriteStartElement("HighestPossibleResult", "");
+            textWriter.WriteString(Handler.MaxExerciseResult.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteEndElement(); // end Spectrum
+
+
+            // Write element Difficulty
+            textWriter.WriteStartElement("StartDifficulty"); // start StartDifficulty
+            textWriter.WriteString(Handler.InitTime.ToString());
+            textWriter.WriteEndElement(); // end StartDifficulty
+
+            // Write element OptionalSettings
+            textWriter.WriteStartElement("OptionalSettings"); // start OptionalSettings
+
+            if (ConfigExtrasChkBoxTimelimit.IsChecked == true && string.IsNullOrEmpty(ConfigTimeLimit.Text))
+            {
+                textWriter.WriteStartElement("TimeLimit", "");
+                textWriter.WriteString(Handler.MaxTime.ToString());
+                textWriter.WriteEndElement();
+            }
+
+            if (ConfigExtrasChkBoxLimitExersices.IsChecked == true && string.IsNullOrEmpty(textboxTxtInLimitExercises.Text))
+            {
+                textWriter.WriteStartElement("ExerciseLimit", "");
+                textWriter.WriteString(Handler.MaxExercises.ToString());
+                textWriter.WriteEndElement();
+            }
+
+            textWriter.WriteStartElement("AllowRetry", "");
+            textWriter.WriteString(Handler.AllowRetry.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteEndElement(); // end OptionalSettings
+            textWriter.WriteEndElement(); // End root element
+
+            // Closes the writer
+            textWriter.Close();
+        }
+
+	private void ReadConfig1(string filename)
+        {
+            // Read a document
+            if (File.Exists(filename) == true)
+            {
+                System.Xml.XmlTextReader textReader = new System.Xml.XmlTextReader(filename);
+                textReader.Read();
+
+                // Read until end of file and as long as it contains a value  
+                while (textReader.Read())
+                {
+                    // Move to fist element  
+                    textReader.MoveToElement();
+
+                    System.Xml.XmlNodeType nType = textReader.NodeType;
+                    
+                    // If node type is an attribute  
+                    if (nType == System.Xml.XmlNodeType.Attribute)
+                    {
+                        //string attr = textReader.Attributes["theattributename"]?.InnerText
+                        string attr = textReader.GetAttribute("UsingAddition");  // it dint hit breakpoint
+                        //Console.WriteLine("reading file succeeded");
+                    }
+                }
+            }
+            else
+            {
+                // WIP
+            }
+        }

@@ -1,0 +1,31 @@
+﻿<Window x:Name="TrainerMainWindow" x:Class="MathTrainerVC19.Trainer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Math_Trainer_VC19="clr-namespace:MathTrainerVC19"
+        mc:Ignorable="d"
+        Title="Trainer" 
+        Height="440.314" 
+        Width="285.192" 
+        Background="#FFE2E2E2">
+    <Grid x:Name="TrainerMainGrid">
+        <Border x:Name="TrainerHeaderBorder" BorderThickness="1" HorizontalAlignment="Left" Height="83.134" VerticalAlignment="Top" Width="270.192" Background="#FF933333" BorderBrush="#FF933333" OpacityMask="#D8000000">
+            <TextBlock x:Name="TrainerHeaderText" HorizontalAlignment="Left" Height="36.138" Margin="9,24.811,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260.474" FontSize="24" FontFamily="Microsoft YaHei UI" FontWeight="Medium" Foreground="White"><Run Text="Training "/></TextBlock>
+        </Border>
+        <Border x:Name="TrainerBorder" BorderThickness="1" HorizontalAlignment="Left" Height="260.707" Margin="0,88.134,0,0" VerticalAlignment="Top" Width="270.192" Background="White" OpacityMask="White" BorderBrush="White">
+            <Label x:Name="lblScore_Text" Content="Score" Margin="0,-1,9,233.58" HorizontalAlignment="Right" Foreground="#FFAEAEAE"/>
+        </Border>
+        <Label x:Name="lblTime" Content="00:00:00" HorizontalAlignment="Left" Margin="10,105.573,0,0" VerticalAlignment="Top" Height="39.247" Width="99.694" FontSize="24"/>
+        <Border x:Name="Border_Exercise" BorderBrush="#FFB9B9B9" BorderThickness="1" HorizontalAlignment="Left" Height="80.9" Margin="10,168.554,0,0" VerticalAlignment="Top" Width="250.192" Background="#FFC7C7C7">
+            <Label HorizontalContentAlignment="Center" x:Name="lbl_Exercise" Content="" VerticalAlignment="Center" Height="60.9" Margin="9" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontSize="36" Foreground="#FF3E3E3E" Initialized="lbl_Exercise_Initialized"/>
+        </Border>
+        <Border x:Name="Border_Result" BorderBrush="#FFB9B9B9" BorderThickness="1" HorizontalAlignment="Left" Height="80.9" Margin="10,254.454,0,0" VerticalAlignment="Top" Width="250.192" Background="#FFE6E6E6">
+            <Math_Trainer_VC19:NumericTextBox x:Name="Result_Input_Box" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Text="" FontSize="36" Margin="9" Width="230.192" Height="60.9" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF6D9BD3" Foreground="#FF316EB8" TextAlignment="Center" KeyDown="Result_Input_Box_KeyDown" TextChanged="Result_Input_Box_TextChanged" />
+        </Border>
+        <Label x:Name="lblScore" Content="0" HorizontalAlignment="Center" Margin="146.104,105.573,17.791,0" VerticalAlignment="Top" FontSize="24" Height="39.247" Width="113.297" ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft"/>
+        <Button Content="Show Result" HorizontalAlignment="Left" Margin="34.083,358.172,0,0" VerticalAlignment="Top" Width="91.272" Height="35.142" Click="BtnShowResults_Click"/>
+        <Button Content="New Training" HorizontalAlignment="Left" Margin="145.078,358.172,0,0" VerticalAlignment="Top" Width="91.272" Height="35.142" Click="BtnNewTraining_Click"/>
+        <Label x:Name="lblTime_Text" Content="Time Left" HorizontalAlignment="Left" Margin="10,88.134,0,0" VerticalAlignment="Top" Foreground="#FFAEAEAE"/>
+    </Grid>
+</Window>

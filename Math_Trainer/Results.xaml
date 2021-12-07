@@ -1,0 +1,42 @@
+﻿<Window x:Name="ResultsMainWindow" x:Class="MathTrainerVC19.Results"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MathTrainerVC19"
+        mc:Ignorable="d"
+        Title="Results" Height="506.623" Width="664.9">
+    <Grid x:Name="ResultsMainGrid">
+        <Border x:Name="ResultsHeaderBorder" BorderBrush="#FF933333" BorderThickness="1" Height="83.134" Margin="1.96,0,0,0" VerticalAlignment="Top" Background="#FF933333" OpacityMask="#D8000000">
+            <TextBlock x:Name="ResultsHeaderText" HorizontalAlignment="Left" Height="36.138" TextWrapping="Wrap" VerticalAlignment="Top" Width="406.204" FontSize="24" FontFamily="Microsoft YaHei UI" FontWeight="Medium" Foreground="White" Margin="9,23.841,0,0"><Run Text="Training Results"/><Run Text=""/></TextBlock>
+        </Border>
+        <Border x:Name="ResultsBodyBorder" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="392.489" Margin="1.96,83.134,0,0" VerticalAlignment="Top" Width="654.94">
+            <Grid x:Name="ResultsBodyGrid" Margin="0,0,-323.848,-55.636">
+                <GroupBox x:Name="ResultsStats" Header="Statistics" HorizontalAlignment="Left" Height="308.005" Margin="324.106,10,0,0" VerticalAlignment="Top" Width="313.079">
+                    <Grid x:Name="ResultsStatsGrid" HorizontalAlignment="Left" Height="289.985" VerticalAlignment="Top" Width="303.079" Margin="0,0,-2,-4.94">
+                        <Label Content="False Answers:" HorizontalAlignment="Left" Height="25.829" Margin="21.921,119.025,0,0" VerticalAlignment="Top" Width="163.908"/>
+                        <Label Content="Correct Answers:" HorizontalAlignment="Left" Height="25.829" Margin="21.921,100.047,0,0" VerticalAlignment="Top" Width="163.908"/>
+                        <Label Content="Time Taken:" HorizontalAlignment="Left" Height="25.829" Margin="21.921,56.268,0,0" VerticalAlignment="Top" Width="163.908"/>
+                        <Label Content="Right Answers in % :" HorizontalAlignment="Left" Height="25.829" Margin="21.921,205.551,0,0" VerticalAlignment="Top" Width="163.908" FontWeight="Bold"/>
+                        <Label x:Name="TimeTakenValue" Content="00.00" HorizontalAlignment="Left" Height="29.801" Margin="190.829,57.367,0,0" VerticalAlignment="Top" Width="64.569" Initialized="TimeTakenValue_Initialized"/>
+                        <Label x:Name="CorrectAnswersValue" Content="0" HorizontalAlignment="Left" Height="29.801" Margin="190.829,100.047,0,0" VerticalAlignment="Top" Width="64.569" Initialized="CorrectAnswersValue_Initialized"/>
+                        <Label x:Name="FalseAnswersValue" Content="0" HorizontalAlignment="Left" Height="29.801" Margin="190.829,119.025,0,0" VerticalAlignment="Top" Width="64.569" Initialized="FalseAnswersValue_Initialized"/>
+                        <Label x:Name="PercentageValue" Content="00.00 %" HorizontalAlignment="Left" Height="29.801" Margin="190.829,205.551,0,0" VerticalAlignment="Top" Width="64.569" FontWeight="Bold" Foreground="#FF2CB846" Initialized="PercentageValue_Initialized"/>
+                        <Label Content="Total Exercises:" HorizontalAlignment="Left" Height="25.829" Margin="21.921,82.097,0,0" VerticalAlignment="Top" Width="163.908"/>
+                        <Label x:Name="TotalExercisesValue" Content="0" HorizontalAlignment="Left" Height="29.801" Margin="190.829,82.097,0,0" VerticalAlignment="Top" Width="64.569" Initialized="TotalExercisesValue_Initialized"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox x:Name="ResultsFeedback" Header="" HorizontalAlignment="Left" Height="139.072" Margin="10,178.933,0,0" VerticalAlignment="Top" Width="309.106">
+                    <Grid x:Name="ResultsFeedbackGrid" HorizontalAlignment="Left" Height="118.145" Margin="0,0,-2,-2.033" VerticalAlignment="Top" Width="299.106">
+                        <Label HorizontalContentAlignment="Center" x:Name="lbl_Exercise" Content="Good Job!" VerticalAlignment="Center" Height="98.145" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontSize="16" Foreground="#FFCF741A" Initialized="lbl_Exercise_Initialized"/>
+                    </Grid>
+                </GroupBox>
+                <Button x:Name="ResultsSaveResultsButton" Content="Save Results" HorizontalAlignment="Left" Height="35.142" Margin="335.927,343.833,0,0" VerticalAlignment="Top" Width="91.272" Click="BtnSaveSettings_Click"/>
+                <Button x:Name="ResultsNewTrainingButton" Content="New Training" HorizontalAlignment="Left" Height="35.142" Margin="528.471,343.833,0,0" VerticalAlignment="Top" Width="91.272" Click="BtnNewTraining_Click"/>
+                <Button x:Name="ResultsTryAgainButton" Content="Try again" HorizontalAlignment="Left" Height="35.142" Margin="432.199,343.833,0,0" VerticalAlignment="Top" Width="91.272" Click="BtnRestart_Click"/>
+                <Image Margin="79.464,49.793,747.324,297.332" Source="results_img.png" Stretch="Fill"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
