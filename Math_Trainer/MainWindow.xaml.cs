@@ -10,32 +10,19 @@ namespace MathTrainerVC19
 {
     public partial class MainWindow : Window
     {
-        //private readonly System.Windows.Input.ICommand canStartTraining;
         private string configFileName = "TrainerConfig.xml";
 
         public MainWindow()
         {
-
             InitializeComponent();
 
             ReadConfig(configFileName);
             ApplyChanges();
             ResizeMode = System.Windows.ResizeMode.CanMinimize;
-            //this.canStartTraining = new DelegateCommand(this.ConfigMainWindow_StateChanged, this.SetStartButtonState);
         }
-
-        //private bool SetStartButtonState(object state)
-        //{
-            //if ((bool)state) { this.ButtonStart.IsEnabled = true; }
-            //else { this.ButtonStart.IsEnabled = false; }
-            //return ButtonStart.IsEnabled = (bool)state;
-        //}
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-
-
-
             this.Hide();
         START:
 
@@ -49,7 +36,7 @@ namespace MathTrainerVC19
 
             if (mTrainer.SetTrainerWindowState == true)
             {
-                mResults.ShowDialog();
+                //mResults.ShowDialog();
                 if (mResults.SetResultsWindowState == true)
                 {
                     goto START;
@@ -98,6 +85,24 @@ namespace MathTrainerVC19
             Handler.UsingDivision = false;
         }
 
+        private void ConfigDisableTimer_Checked(object sender, RoutedEventArgs e)
+        {
+            Handler.DisableTimer = true;
+            ConfigDifficultyRdBtnEasy.IsEnabled = false;
+            ConfigDifficultyRdBtnMedium.IsEnabled = false;
+            ConfigDifficultyRdBtnHard.IsEnabled = false;
+            ConfigExtrasChkBoxTimelimit.IsEnabled = false;
+        }
+
+        private void ConfigDisableTimer_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Handler.DisableTimer = false;
+            ConfigDifficultyRdBtnEasy.IsEnabled = true;
+            ConfigDifficultyRdBtnMedium.IsEnabled = true;
+            ConfigDifficultyRdBtnHard.IsEnabled = true;
+            ConfigExtrasChkBoxTimelimit.IsEnabled = true;
+        }
+
         private void Radio_BtnCheck(object sender, RoutedEventArgs e)
         {
             RadioButton radio = (RadioButton)sender;
@@ -125,21 +130,12 @@ namespace MathTrainerVC19
             }
         }
 
-
         private void TxtBox_HighestResult_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs arg)
         {
-
-      //     do
-      //      {
-      //          Handler.MaxExerciseResult = ExceptionManager.Control.AdvancedInputCheck(TxtBox_HighestResult.Text);
-      //      }
-             while (ExceptionManager.Control.AdvancedInputCheck(TxtBox_HighestResult.Text) <= 10 && ExceptionManager.Control.AdvancedInputCheck(TxtBox_HighestResult.Text) >= 1000)
+            while (ExceptionManager.Control.AdvancedInputCheck(TxtBox_HighestResult.Text) <= 10 && ExceptionManager.Control.AdvancedInputCheck(TxtBox_HighestResult.Text) >= 1000)
             {
-                Console.WriteLine("\nWaiting till evening xd");
+                Console.WriteLine("\nHighest Result reached");
             }
-
-            //Handler.MaxExerciseResult = ExceptionManager.Control.AdvancedInputCheck(TxtBox_HighestResult.Text);
-            //SetStartButtonState(Handler.MaxExerciseResult >= 9 || Handler.MaxExerciseResult <= 30000 ? true : false);
         }
 
         private void textboxTxtInLimitExercises_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs arg)
@@ -154,7 +150,7 @@ namespace MathTrainerVC19
 
         private void TxtBox_HighestResult_Initialized(object sender, EventArgs e)
         {
-            TxtBox_HighestResult.Text = "10";
+            TxtBox_HighestResult.Text = "50";
 
             Handler.MaxExerciseResult = ExceptionManager.Control.AdvancedInputCheck(TxtBox_HighestResult.Text);
         }
@@ -170,7 +166,7 @@ namespace MathTrainerVC19
             {
                 this.ButtonStart.IsEnabled = false;
             }
-            else /// loooool
+            else
             {
                 this.ButtonStart.IsEnabled = true;
             }
@@ -190,7 +186,6 @@ namespace MathTrainerVC19
         {
             RestoreDefaultSettings();
         }
-
 
         private void ReadConfig(string filename)
         {
@@ -227,7 +222,7 @@ namespace MathTrainerVC19
             }
         }
 
-        private void WriteConfig(string filename) 
+        private void WriteConfig(string filename)
         {
             try
             {
@@ -316,7 +311,6 @@ namespace MathTrainerVC19
                 
             }
             
-
             ConfigExtrasChkBoxTimelimit.IsChecked = false;
             ConfigTimeLimit.Text = "";
             Handler.MaxTime = 0;
@@ -332,41 +326,6 @@ namespace MathTrainerVC19
 
             if (Handler.StartDifficulty == 1)
                 ConfigDifficultyRdBtnEasy.IsChecked = true;
-        }
-
-        private class DelegateCommand : ICommand
-        {
-            private Action<object, EventArgs> configMainWindow_StateChanged;
-            private Action<bool> setStartButtonState;
-
-            public DelegateCommand(Action<object, EventArgs> configMainWindow_StateChanged, Action<bool> setStartButtonState)
-            {
-                this.configMainWindow_StateChanged = configMainWindow_StateChanged;
-                this.setStartButtonState = setStartButtonState;
-            }
-
-            event EventHandler ICommand.CanExecuteChanged
-            {
-                add
-                {
-                    throw new NotImplementedException();
-                }
-
-                remove
-                {
-                    throw new NotImplementedException();
-                }
-            }
-
-            bool ICommand.CanExecute(object parameter)
-            {
-                throw new NotImplementedException();
-            }
-
-            void ICommand.Execute(object parameter)
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 }

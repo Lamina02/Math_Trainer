@@ -19,40 +19,47 @@ namespace MathTrainerVC19
         {
             InitializeComponent();
             SetTrainerWindowState = false;
-            
-            /// Timer
-            _time = TimeSpan.FromSeconds(Handler.InitTime);
-            _passed_time = TimeSpan.FromSeconds(0);
 
-            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            if (Handler.DisableTimer)
+                return;
+            else
             {
-                lblTime.Content = _time.ToString("c");
-                if (_time == TimeSpan.Zero)
+                /// Timer
+                _time = TimeSpan.FromSeconds(Handler.InitTime);
+                _passed_time = TimeSpan.FromSeconds(0);
+
+                _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
                 {
-                    _timer.Stop();
+                    lblTime.Content = _time.ToString("c");
+                    if (_time == TimeSpan.Zero)
+                    {
+                        _timer.Stop();
 
-                    SetTrainerWindowState = true;
-                    this.Close();
-                }
-                _time = _time.Add(TimeSpan.FromSeconds(-1));
-            }, Application.Current.Dispatcher);
+                        SetTrainerWindowState = true;
+                        this.Close();
+                    }
+                    _time = _time.Add(TimeSpan.FromSeconds(-1));
+                }, Application.Current.Dispatcher);
 
-            _passed_time_timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            {
-                if (_time == TimeSpan.Zero)
+                _passed_time_timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
                 {
-                    _passed_time_timer.Stop();
-                }
-                _passed_time = _passed_time.Add(TimeSpan.FromSeconds(1));
-                Handler.PassedTime = _passed_time; // save timer intervall in our "database" so we can access it later
-            }, Application.Current.Dispatcher);
+                    if (_time == TimeSpan.Zero)
+                    {
+                        _passed_time_timer.Stop();
+                    }
+                    _passed_time = _passed_time.Add(TimeSpan.FromSeconds(1));
+                    Handler.PassedTime = _passed_time; // save timer intervall in our "database" so we can access it later
+                }, Application.Current.Dispatcher);
 
-            _timer.Start();
-            _passed_time_timer.Start();
+                _timer.Start();
+                _passed_time_timer.Start();
+            }
         }
 
         void Timer_Tick(object sender, EventArgs e)
         {
+            if (Handler.DisableTimer)
+                lblTime.Content = "no limit";
             lblTime.Content = DateTime.Now.ToLongTimeString();
 
         }
@@ -60,14 +67,17 @@ namespace MathTrainerVC19
         private void BtnShowResults_Click(object sender, RoutedEventArgs e)
         {
             // Switch back to saved training session
+            var ResultsWin = new Results();
+            ResultsWin.DataContext = null;
+            ResultsWin.DataContext = new Results();
             SetTrainerWindowState = true;
-            this.Close(); 
+            this.Close();
         }
 
         private void BtnNewTraining_Click(object sender, RoutedEventArgs e)
         {
-            if(_time != TimeSpan.Zero && _time.TotalSeconds >= 4)
-            _time = _time.Add(TimeSpan.FromSeconds(-3));
+            if(_time != TimeSpan.Zero && _time.TotalSeconds >= 4 && !Handler.DisableTimer)
+                _time = _time.Add(TimeSpan.FromSeconds(-3));
             lbl_Exercise_Initialized(0, e);
             Result_Input_Box.Clear();
         }
@@ -81,7 +91,7 @@ namespace MathTrainerVC19
             int right_operand = rnd.Next(1, exerciseResultPerSide);
 
             if (Handler.MaxExercises == 0)
-                Handler.MaxExercises = 3899492;
+                Handler.MaxExercises = 999999;
 
             while (left_operand / right_operand <= 0.0)
             {
@@ -136,13 +146,13 @@ namespace MathTrainerVC19
             Handler.MaxExercises -= 1;
         }
 
-        private void Result_Input_Box_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)  // check ever key
+        private void Result_Input_Box_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)  // check every key
         {
             if(Handler.MaxExercises == Handler.NumExercises)
             {
-                if ((Handler.Score >= 10000 || Handler.Score <= 0) && _time == TimeSpan.Zero)
+                if ((Handler.Score >= 10000 || Handler.Score <= 0) && _time == TimeSpan.Zero && !Handler.DisableTimer)
                 {
-                    _timer.Stop();
+                    if (!Handler.DisableTimer) _timer.Stop();
                     SetTrainerWindowState = true;
                     this.Close();
                 }
@@ -152,10 +162,10 @@ namespace MathTrainerVC19
             {
                 if (Handler.Result == Handler.Input) // check if result is right after pressing enter 
                 {
-                    if (Handler.Score <= 9999 && _time != TimeSpan.Zero)
+                    if (Handler.Score <= 9999 && _time != TimeSpan.Zero || Handler.DisableTimer)
                     {
                         lblScore.Content = Handler.Score += 1;
-                        _time = _time.Add(TimeSpan.FromSeconds(10)); // add 10 sec to timer
+                        if (!Handler.DisableTimer) _time = _time.Add(TimeSpan.FromSeconds(10)); // add 10 sec to timer
                         lbl_Exercise_Initialized(0,e); // new exercise
                         Result_Input_Box.Clear(); // flush input from result text box
                         Handler.CorrectAnswers += 1;
@@ -163,18 +173,18 @@ namespace MathTrainerVC19
                 }
                 else
                 {
-                    if (Handler.Score >= 1 && (_time.TotalSeconds >= 10 || _time == TimeSpan.Zero))
+                    if (Handler.Score >= 1 && (_time.TotalSeconds >= 10 && !Handler.DisableTimer || _time == TimeSpan.Zero && !Handler.DisableTimer))
                     {
                         if(Handler.AllowRetry)
                         {
                             lblScore.Content = Handler.Score -= 1;
-                            _time = _time.Add(TimeSpan.FromSeconds(-10)); // take away 10 sec from timer
+                            if (!Handler.DisableTimer) _time = _time.Add(TimeSpan.FromSeconds(-10)); // take away 10 sec from timer
                             Handler.FalseAnswers += 1;
                         }
                         else
                         {
                             lblScore.Content = Handler.Score -= 1;
-                            _time = _time.Add(TimeSpan.FromSeconds(-10)); // take away 10 sec from timer
+                            if (!Handler.DisableTimer) _time = _time.Add(TimeSpan.FromSeconds(-10)); // take away 10 sec from timer
                             Handler.FalseAnswers += 1;
                             lbl_Exercise_Initialized(0, e); // new exercise
                             Result_Input_Box.Clear(); // flush input from result text box
@@ -190,7 +200,5 @@ namespace MathTrainerVC19
         {
             Handler.Input = ExceptionManager.Control.AdvancedInputCheck(Result_Input_Box.Text);
         }
-
-        // not enter
     }
 }

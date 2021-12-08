@@ -8,7 +8,7 @@
         Title="Trainer" 
         Height="440.314" 
         Width="285.192" 
-        Background="#FFE2E2E2">
+        Background="#FFE2E2E2" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid x:Name="TrainerMainGrid">
         <Border x:Name="TrainerHeaderBorder" BorderThickness="1" HorizontalAlignment="Left" Height="83.134" VerticalAlignment="Top" Width="270.192" Background="#FF933333" BorderBrush="#FF933333" OpacityMask="#D8000000">
             <TextBlock x:Name="TrainerHeaderText" HorizontalAlignment="Left" Height="36.138" Margin="9,24.811,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260.474" FontSize="24" FontFamily="Microsoft YaHei UI" FontWeight="Medium" Foreground="White"><Run Text="Training "/></TextBlock>

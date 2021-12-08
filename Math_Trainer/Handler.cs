@@ -11,6 +11,7 @@ namespace MathTrainerVC19
         private static bool MultiplicationFlag;
         private static bool DivisionFlag;
         private static bool tAllowRetry;
+        private static bool tDisableTimer;
         private static int tInitTime;
         private static int tStartDifficulty;
         private static int tMaxExerciseResult;
@@ -39,6 +40,8 @@ namespace MathTrainerVC19
         public static bool UsingDivision { get => DivisionFlag; set => DivisionFlag = value; }
 
         public static bool AllowRetry { get => tAllowRetry; set => tAllowRetry = value; }
+
+        public static bool DisableTimer { get => tDisableTimer; set => tDisableTimer = value; }
 
         public static int MaxExerciseResult { get => tMaxExerciseResult; set => tMaxExerciseResult = value; }
 

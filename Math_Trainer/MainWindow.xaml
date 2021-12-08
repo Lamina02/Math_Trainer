@@ -46,10 +46,11 @@
                 </GroupBox>
                 <GroupBox Grid.Column="0" x:Name="ConfigDifficulty" Header="Difficulty" HorizontalAlignment="Left" Height="175.199" Margin="10,73.508,0,0" VerticalAlignment="Top" Width="210">
                     <Grid x:Name="ConfigDifficultyGrid" HorizontalAlignment="Left" Height="149.102" VerticalAlignment="Top" Width="205" Margin="-5,0,-2,-3.228">
-                        <Label x:Name="ConfigDifficultyLabelDescription" Content="Choose your start time: &#xA;" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="11" FontFamily="Segoe UI Light"/>
-                        <RadioButton x:Name="ConfigDifficultyRdBtnEasy" Content="Easy (15 seconds)" Tag="Easy" HorizontalAlignment="Left" Margin="10,48.718,0,0" VerticalAlignment="Top" FontSize="11" Checked="Radio_BtnCheck" GroupName="ConfigDifficulty" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" IsChecked="True"/>
-                        <RadioButton x:Name="ConfigDifficultyRdBtnMedium" Content="Medium (10 seconds)" Tag="Medium" HorizontalAlignment="Left" Margin="10,79.234,0,0" VerticalAlignment="Top" FontSize="11" Checked="Radio_BtnCheck" GroupName="ConfigDifficulty" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6"/>
-                        <RadioButton x:Name="ConfigDifficultyRdBtnHard" Content="Hard (5 seconds)" Tag="Hard" HorizontalAlignment="Left" Margin="10,110.316,0,0" VerticalAlignment="Top" FontSize="11" Checked="Radio_BtnCheck" GroupName="ConfigDifficulty" Background="#FFE6E6E6" BorderBrush="#FFB9B9B9"/>
+                        <Label x:Name="ConfigDifficultyLabelDescription" Content="Choose your start time: &#xA;" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="11" FontFamily="Segoe UI Light" Height="28"/>
+                        <CheckBox x:Name="ConfigDifficultyChkDisableTimer" Content="Disable Timer" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" FontSize="11" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" Checked="ConfigDisableTimer_Checked" Unchecked="ConfigDisableTimer_Unchecked"/>
+                        <RadioButton x:Name="ConfigDifficultyRdBtnEasy" Content="Easy (15 seconds)" Tag="Easy" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" FontSize="11" Checked="Radio_BtnCheck" GroupName="ConfigDifficulty" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" IsChecked="True"/>
+                        <RadioButton x:Name="ConfigDifficultyRdBtnMedium" Content="Medium (10 seconds)" Tag="Medium" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" FontSize="11" Checked="Radio_BtnCheck" GroupName="ConfigDifficulty" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6"/>
+                        <RadioButton x:Name="ConfigDifficultyRdBtnHard" Content="Hard (5 seconds)" Tag="Hard" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" FontSize="11" Checked="Radio_BtnCheck" GroupName="ConfigDifficulty" Background="#FFE6E6E6" BorderBrush="#FFB9B9B9"/>
                     </Grid>
                 </GroupBox>
             </Grid>

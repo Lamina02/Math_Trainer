@@ -17,35 +17,13 @@ namespace MathTrainerVC19
         public Results()
         {
             InitializeComponent();
-            SetResultsWindowState = false;
+            //SetResultsWindowState = false;
             ResizeMode = System.Windows.ResizeMode.CanMinimize;
         }
 
-        private void BtnNewTraining_Click(object sender, RoutedEventArgs e) // goto main window
+        // Switch to configuration window
+        private void BtnNewTraining_Click(object sender, RoutedEventArgs e)
         {
-            // Switch to configuration window
-
-        //    var MainWin = new MainWindow();
-        //    this.Hide();
-        //    MainWin.Show();
-
-
-            // Check for null and close current Window
-            if (System.Windows.Application.Current.MainWindow != null)
-                this.Close();
-        }
-
-        private void BtnRestart_Click(object sender, RoutedEventArgs e) // goto trainer window
-        {
-
-            // Switch back to saved training session
-
-
-            var TrainerWindow = new Trainer();
-            TrainerWindow.Show();
-
-            TrainerWindow.SetTrainerWindowState = false;
-
             // Check for null and close current Window
             if (System.Windows.Application.Current.MainWindow != null)
                 this.Close();
@@ -72,21 +50,23 @@ namespace MathTrainerVC19
 
         private void CorrectAnswersValue_Initialized(object sender, EventArgs e)
         {
-            if (Handler.NumExercises != 0) { CorrectAnswersValue.Content = Handler.CorrectAnswers; }
-            else { Handler.CorrectAnswers = 0; }
+            if (!string.IsNullOrEmpty(Handler.CorrectAnswers.ToString())) { CorrectAnswersValue.Content = Handler.CorrectAnswers.ToString(); }
+            //if (Handler.NumExercises != 0) { CorrectAnswersValue.Content = Handler.CorrectAnswers.ToString(); }
+            //else { Handler.CorrectAnswers = 0; }
         }
 
         private void FalseAnswersValue_Initialized(object sender, EventArgs e)
         {
-            if (Handler.NumExercises != 0) { FalseAnswersValue.Content = Handler.FalseAnswers; }
-            else { Handler.FalseAnswers = 0; }
+            if (!string.IsNullOrEmpty(Handler.FalseAnswers.ToString())) { FalseAnswersValue.Content = Handler.FalseAnswers.ToString(); }
+            //if (Handler.NumExercises != 0) { FalseAnswersValue.Content = Handler.FalseAnswers.ToString(); }
+            //else { Handler.FalseAnswers = 0; }
         }
 
         private void PercentageValue_Initialized(object sender, EventArgs e)
         {
             if (Handler.NumExercises != 0)
             {
-                percentage = ((Handler.CorrectAnswers * 100) / Handler.NumExercises);
+                percentage = Handler.CorrectAnswers * 100 / Handler.NumExercises;
                 PercentageValue.Content = percentage.ToString() + "%";
             }
         }
@@ -107,35 +87,35 @@ namespace MathTrainerVC19
 
             if (percentage == 100)
             {
-                lbl_Exercise.Content = FeedbackCaption[0];
+                lbl_Exercise.Text = FeedbackCaption[0];
             }
             else if (percentage >= 70)
             {
-                lbl_Exercise.Content = FeedbackCaption[1];
+                lbl_Exercise.Text = FeedbackCaption[1];
             }
             else if (percentage >= 50)
             {
-                lbl_Exercise.Content = FeedbackCaption[2];
+                lbl_Exercise.Text = FeedbackCaption[2];
             }
             else if (percentage == 50)
             {
-                lbl_Exercise.Content = FeedbackCaption[3];
+                lbl_Exercise.Text = FeedbackCaption[3];
             }
             else if (percentage >= 40)
             {
-                lbl_Exercise.Content = FeedbackCaption[4];
+                lbl_Exercise.Text = FeedbackCaption[4];
             }
             else if (percentage >= 26)
             {
-                lbl_Exercise.Content = FeedbackCaption[5];
+                lbl_Exercise.Text = FeedbackCaption[5];
             }
             else if (percentage >= 10)
             {
-                lbl_Exercise.Content = FeedbackCaption[6];
+                lbl_Exercise.Text = FeedbackCaption[6];
             }
             else if (percentage >= 0 || percentage == 0)
             {
-                lbl_Exercise.Content = FeedbackCaption[7];
+                lbl_Exercise.Text = FeedbackCaption[7];
             }
         }
 
