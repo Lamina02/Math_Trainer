@@ -67,9 +67,7 @@ namespace MathTrainerVC19
         private void BtnShowResults_Click(object sender, RoutedEventArgs e)
         {
             // Switch back to saved training session
-            var ResultsWin = new Results();
-            ResultsWin.DataContext = null;
-            ResultsWin.DataContext = new Results();
+            if (!Handler.DisableTimer) _timer.Stop();
             SetTrainerWindowState = true;
             this.Close();
         }
@@ -150,7 +148,7 @@ namespace MathTrainerVC19
         {
             if(Handler.MaxExercises == Handler.NumExercises)
             {
-                if ((Handler.Score >= 10000 || Handler.Score <= 0) && _time == TimeSpan.Zero && !Handler.DisableTimer)
+                if ((Handler.Score >= 999999 || Handler.Score <= 0) && _time == TimeSpan.Zero && !Handler.DisableTimer)
                 {
                     if (!Handler.DisableTimer) _timer.Stop();
                     SetTrainerWindowState = true;
@@ -175,7 +173,7 @@ namespace MathTrainerVC19
                 {
                     if (Handler.Score >= 1 && (_time.TotalSeconds >= 10 && !Handler.DisableTimer || _time == TimeSpan.Zero && !Handler.DisableTimer))
                     {
-                        if(Handler.AllowRetry)
+                        if (Handler.AllowRetry)
                         {
                             lblScore.Content = Handler.Score -= 1;
                             if (!Handler.DisableTimer) _time = _time.Add(TimeSpan.FromSeconds(-10)); // take away 10 sec from timer

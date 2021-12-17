@@ -21,33 +21,33 @@
                 </Grid.ColumnDefinitions>
                 <GroupBox x:Name="ConfigCalcT" Header="Calculation Types" HorizontalAlignment="Left" Height="238.707" Margin="225,10,0,0" VerticalAlignment="Top" Width="255.252">
                     <Grid x:Name="ConfigCalcTGrid" HorizontalAlignment="Left" Height="210.866" Margin="-6,0,-2,-3.902" VerticalAlignment="Top" Width="236">
-                        <CheckBox x:Name="ConfigCalcTChkBoxAddition" Content="Addition" HorizontalAlignment="Left" Margin="10,33.807,0,0" VerticalAlignment="Top" FontSize="11" Checked="IsAdditionChecked" Background="#FFE6E6E6" BorderBrush="#FFB9B9B9" IsChecked="False" Unchecked="ConfigCalcTChkBoxAddition_Unchecked"/>
-                        <CheckBox x:Name="ConfigCalcTChkBoxSubtraction" Content="Subtraction" HorizontalAlignment="Left" Margin="10,63.906,0,0" VerticalAlignment="Top" FontSize="11" Checked="IsSubtractionChecked" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" Unchecked="ConfigCalcTChkBoxSubtraction_Unchecked"/>
-                        <CheckBox x:Name="ConfigCalcTChkBoxMultiplication" Content="Multiplication" HorizontalAlignment="Left" Margin="10,93.807,0,0" VerticalAlignment="Top" FontSize="11" Checked="IsMultiplicationChecked" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" Unchecked="ConfigCalcTChkBoxMultiplication_Unchecked"/>
-                        <CheckBox x:Name="ConfigCalcTChkBoxDivision" Content="Division" HorizontalAlignment="Left" Margin="10,123.906,0,0" VerticalAlignment="Top" FontSize="11" Checked="IsDivisionChecked" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" Unchecked="ConfigCalcTChkBoxDivision_Unchecked"/>
+                        <CheckBox x:Name="ConfigCalcTChkBoxAddition" Content="Addition" HorizontalAlignment="Left" Margin="10,33.807,0,0" VerticalAlignment="Top" FontSize="11" Checked="IsAdditionChecked" Background="White" BorderBrush="#FFB9B9B9" IsChecked="False" Unchecked="ConfigCalcTChkBoxAddition_Unchecked"/>
+                        <CheckBox x:Name="ConfigCalcTChkBoxSubtraction" Content="Subtraction" HorizontalAlignment="Left" Margin="10,63.906,0,0" VerticalAlignment="Top" FontSize="11" Checked="IsSubtractionChecked" BorderBrush="#FFB9B9B9" Background="White" Unchecked="ConfigCalcTChkBoxSubtraction_Unchecked"/>
+                        <CheckBox x:Name="ConfigCalcTChkBoxMultiplication" Content="Multiplication" HorizontalAlignment="Left" Margin="10,93.807,0,0" VerticalAlignment="Top" FontSize="11" Checked="IsMultiplicationChecked" BorderBrush="#FFB9B9B9" Background="White" Unchecked="ConfigCalcTChkBoxMultiplication_Unchecked"/>
+                        <CheckBox x:Name="ConfigCalcTChkBoxDivision" Content="Division" HorizontalAlignment="Left" Margin="10,123.906,0,0" VerticalAlignment="Top" FontSize="11" Checked="IsDivisionChecked" BorderBrush="#FFB9B9B9" Background="White" Unchecked="ConfigCalcTChkBoxDivision_Unchecked"/>
                     </Grid>
                 </GroupBox>
                 <GroupBox x:Name="ConfigExtras" Header="Optional Settings" HorizontalAlignment="Left" Height="238.707" Margin="485.252,10,0,0" VerticalAlignment="Top" Width="264.748" Grid.ColumnSpan="2"
                           Grid.Column="0">
                     <Grid x:Name="ConfigExtrasGrid" HorizontalAlignment="Left" Height="221.662" Margin="-6,0,-2,-5.915" VerticalAlignment="Top" Width="260.748">
-                        <CheckBox x:Name="ConfigExtrasChkBoxTimelimit" Content="Time limit in seconds" HorizontalAlignment="Left" Margin="10,33.906,0,0" VerticalAlignment="Top" FontSize="11" Background="#FFE6E6E6" BorderBrush="#FFB9B9B9"/>
-                        <CheckBox x:Name="ConfigExtrasChkBoxLimitExersices" Content="Limit of exercises" HorizontalAlignment="Left" Margin="10,63.906,0,0" VerticalAlignment="Top" FontSize="11" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6"/>
-                        <Math_Trainer_VC19:NumericTextBox IsEnabled="{Binding ElementName=ConfigExtrasChkBoxLimitExersices, Path=IsChecked}" x:Name="textboxTxtInLimitExercises" Text="{Binding TextInTimeLimit}" HorizontalAlignment="Left" Height="20.606" Margin="195.404,63.906,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55.344" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" TextChanged="textboxTxtInLimitExercises_TextChanged"/>
-                        <Math_Trainer_VC19:NumericTextBox IsEnabled="{Binding ElementName=ConfigExtrasChkBoxTimelimit, Path=IsChecked}" x:Name="ConfigTimeLimit" Text="{Binding TextInLimitExercises}" HorizontalAlignment="Left" Height="20.606" Margin="195.404,33.906,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55.344" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" TextChanged="ConfigTimeLimit_TextChanged"/>
+                        <CheckBox x:Name="ConfigExtrasChkBoxTimelimit" Content="Time limit in seconds" HorizontalAlignment="Left" Margin="10,33.906,0,0" VerticalAlignment="Top" FontSize="11" Background="White" BorderBrush="#FFB9B9B9"/>
+                        <CheckBox x:Name="ConfigExtrasChkBoxLimitExersices" Content="Limit of exercises" HorizontalAlignment="Left" Margin="10,63.906,0,0" VerticalAlignment="Top" FontSize="11" BorderBrush="#FFB9B9B9" Background="White"/>
+                        <Math_Trainer_VC19:NumericTextBox IsEnabled="{Binding ElementName=ConfigExtrasChkBoxLimitExersices, Path=IsChecked}" x:Name="textboxTxtInLimitExercises" Text="{Binding TextInTimeLimit}" HorizontalAlignment="Left" Height="20.606" Margin="195.404,63.906,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55.344" BorderBrush="#FFB9B9B9" Background="White" TextChanged="textboxTxtInLimitExercises_TextChanged"/>
+                        <Math_Trainer_VC19:NumericTextBox IsEnabled="{Binding ElementName=ConfigExtrasChkBoxTimelimit, Path=IsChecked}" x:Name="ConfigTimeLimit" Text="{Binding TextInLimitExercises}" HorizontalAlignment="Left" Height="20.606" Margin="195.404,33.906,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55.344" BorderBrush="#FFB9B9B9" Background="White" TextChanged="ConfigTimeLimit_TextChanged"/>
                         <Label x:Name="ErrorTextLabel" Content="" HorizontalAlignment="Left" Height="47" Margin="10,142.906,0,0" VerticalAlignment="Top" Width="240.748"/>
-                        <CheckBox x:Name="ConfigExtrasChkBoxAllowRetry" Content="Allow Retry" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" FontSize="11" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" Checked="ConfigExtrasChkBoxAllowRetry_Checked"/>
+                        <CheckBox x:Name="ConfigExtrasChkBoxAllowRetry" Content="Allow Retry" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" FontSize="11" BorderBrush="#FFB9B9B9" Background="White" Checked="ConfigExtrasChkBoxAllowRetry_Checked"/>
                     </Grid>
                 </GroupBox>
                 <GroupBox Grid.Column="0" x:Name="ConfigSpectrum" Header="Spectrum" Margin="10,10,319.895,190.199">
                     <Grid x:Name="ConfigSpectrumGrid" HorizontalAlignment="Left" Height="48.244" Margin="-6,-6.96,-6,-5.736" VerticalAlignment="Top" Width="210">
                         <Label x:Name="ConfigSpectrumLabelHighestNum" Content="Highest result possible &#xA;(10 - 30'000)" HorizontalAlignment="Left" Height="38.508" Margin="10,9.736,0,0" VerticalAlignment="Top" FontSize="11" FontFamily="Segoe UI Light" Width="118.955"/>
-                        <Math_Trainer_VC19:NumericTextBox x:Name="TxtBox_HighestResult" HorizontalAlignment="Left" Height="20.606" Margin="144.656,17.638,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55.344" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" TextChanged="TxtBox_HighestResult_TextChanged" UndoLimit="0" ToolTip="maximum of results possible" Initialized="TxtBox_HighestResult_Initialized"/>
+                        <Math_Trainer_VC19:NumericTextBox x:Name="TxtBox_HighestResult" HorizontalAlignment="Left" Height="20.606" Margin="144.656,17.638,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55.344" BorderBrush="#FFB9B9B9" Background="White" TextChanged="TxtBox_HighestResult_TextChanged" UndoLimit="0" ToolTip="maximum of results possible" Initialized="TxtBox_HighestResult_Initialized"/>
                     </Grid>
                 </GroupBox>
                 <GroupBox Grid.Column="0" x:Name="ConfigDifficulty" Header="Difficulty" HorizontalAlignment="Left" Height="175.199" Margin="10,73.508,0,0" VerticalAlignment="Top" Width="210">
                     <Grid x:Name="ConfigDifficultyGrid" HorizontalAlignment="Left" Height="149.102" VerticalAlignment="Top" Width="205" Margin="-5,0,-2,-3.228">
                         <Label x:Name="ConfigDifficultyLabelDescription" Content="Choose your start time: &#xA;" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="11" FontFamily="Segoe UI Light" Height="28"/>
-                        <CheckBox x:Name="ConfigDifficultyChkDisableTimer" Content="Disable Timer" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" FontSize="11" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" Checked="ConfigDisableTimer_Checked" Unchecked="ConfigDisableTimer_Unchecked"/>
+                        <CheckBox x:Name="ConfigDifficultyChkDisableTimer" Content="Disable Timer" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" FontSize="11" BorderBrush="#FFB9B9B9" Background="White" Checked="ConfigDisableTimer_Checked" Unchecked="ConfigDisableTimer_Unchecked"/>
                         <RadioButton x:Name="ConfigDifficultyRdBtnEasy" Content="Easy (15 seconds)" Tag="Easy" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" FontSize="11" Checked="Radio_BtnCheck" GroupName="ConfigDifficulty" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" IsChecked="True"/>
                         <RadioButton x:Name="ConfigDifficultyRdBtnMedium" Content="Medium (10 seconds)" Tag="Medium" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" FontSize="11" Checked="Radio_BtnCheck" GroupName="ConfigDifficulty" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6"/>
                         <RadioButton x:Name="ConfigDifficultyRdBtnHard" Content="Hard (5 seconds)" Tag="Hard" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" FontSize="11" Checked="Radio_BtnCheck" GroupName="ConfigDifficulty" Background="#FFE6E6E6" BorderBrush="#FFB9B9B9"/>
@@ -55,7 +55,7 @@
                 </GroupBox>
             </Grid>
         </Border>
-        <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Left" Margin="671,357.684,0,0" VerticalAlignment="Top" Width="81" Height="43.63" Click="BtnStart_Click" Background="{x:Null}" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Left" Margin="671,357.684,0,0" VerticalAlignment="Top" Width="81" Height="43.63" Click="BtnStart_Click" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" BorderBrush="#FF727272">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="IsEnabled" Value="True" />
@@ -67,8 +67,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Label x:Name="CopyrightText" Content="Lisa Wüthrich 2020" HorizontalAlignment="Left" Margin="10,353.841,0,0" VerticalAlignment="Top" Width="126.993" FontSize="9" Foreground="#FF767676"/>
-        <CheckBox x:Name="ConfigExtrasChkBoxAllowRetry_Copy" Content="Load this Config at next startup" HorizontalAlignment="Left" Margin="458.252,357.684,0,0" VerticalAlignment="Top" FontSize="11" BorderBrush="#FFB9B9B9" Background="#FFE6E6E6" Checked="SaveConfig_Clicked"/>
+        <Label x:Name="CopyrightText" Content="2020-2022 Lamina022&#xD;&#xA;minerva-services.cf" HorizontalAlignment="Left" Margin="10,353.841,0,0" VerticalAlignment="Top" Width="126.993" FontSize="9" Foreground="#FF767676"/>
+        <CheckBox x:Name="ConfigExtrasChkBoxAllowRetry_Copy" Content="Load this Config at next startup" HorizontalAlignment="Left" Margin="458.252,357.684,0,0" VerticalAlignment="Top" FontSize="11" BorderBrush="#FFB9B9B9" Background="White" Checked="SaveConfig_Clicked"/>
         <Button x:Name="BtnResetConfig" Content="Reset to Default" HorizontalAlignment="Left" Margin="458.252,377.782,0,0" VerticalAlignment="Top" Width="172.402" Height="19.022" Click="BtnResetConfig_Click" IsEnabled="True" Background="{x:Null}" RenderTransformOrigin="0.5,0.5">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">

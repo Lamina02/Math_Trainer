@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace MathTrainerVC19
@@ -10,7 +11,7 @@ namespace MathTrainerVC19
     {
         private bool resultsFlag = false;
         private static int percentage = 0;
-        private string resultsFileName = "Results" + DateTime.Today.ToString("yyyy-MM-dd") + ".txt";
+        private string resultsFileName = "Results_" + DateTime.Today.ToString("yyyy-MM-dd") + ".txt";
 
         public bool SetResultsWindowState { get => resultsFlag; set => resultsFlag = value; }
 
@@ -24,6 +25,12 @@ namespace MathTrainerVC19
         // Switch to configuration window
         private void BtnNewTraining_Click(object sender, RoutedEventArgs e)
         {
+            Handler.Score = 0;
+            Handler.CorrectAnswers = 0;
+            Handler.FalseAnswers = 0;
+            Handler.MaxTime = 0;
+            Handler.MaxExercises = 0;
+
             // Check for null and close current Window
             if (System.Windows.Application.Current.MainWindow != null)
                 this.Close();
@@ -41,6 +48,9 @@ namespace MathTrainerVC19
                 writer.WriteLine("\nFalse Answers: " + Handler.FalseAnswers);
                 writer.WriteLine("\nTime Taken: "  + Handler.MaxTime);
             }
+
+            // Notify user
+            MessageBox.Show("Results saved!");
         }
 
         private void TimeTakenValue_Initialized(object sender, EventArgs e)
@@ -48,18 +58,39 @@ namespace MathTrainerVC19
             if (!string.IsNullOrEmpty(Handler.MaxTime.ToString())) { TimeTakenValue.Content = Handler.MaxTime; }
         }
 
-        private void CorrectAnswersValue_Initialized(object sender, EventArgs e)
+        async private void CorrectAnswersValue_Initialized(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Handler.CorrectAnswers.ToString())) { CorrectAnswersValue.Content = Handler.CorrectAnswers.ToString(); }
-            //if (Handler.NumExercises != 0) { CorrectAnswersValue.Content = Handler.CorrectAnswers.ToString(); }
-            //else { Handler.CorrectAnswers = 0; }
+            if (Handler.NumExercises != 0)
+            {
+                CorrectAnswersValue.Content = Handler.CorrectAnswers;
+                bool handled = await Task.Run(() => ExecuteLongTask()).ConfigureAwait(true);
+            }
+            else { Handler.CorrectAnswers = 0; }
         }
 
-        private void FalseAnswersValue_Initialized(object sender, EventArgs e)
+        async private void FalseAnswersValue_Initialized(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Handler.FalseAnswers.ToString())) { FalseAnswersValue.Content = Handler.FalseAnswers.ToString(); }
-            //if (Handler.NumExercises != 0) { FalseAnswersValue.Content = Handler.FalseAnswers.ToString(); }
-            //else { Handler.FalseAnswers = 0; }
+            if (Handler.NumExercises != 0)
+            {
+                FalseAnswersValue.Content = Handler.FalseAnswers;
+                bool handled = await Task.Run(() => ExecuteLongTask()).ConfigureAwait(true);
+            }
+            else { Handler.FalseAnswers = 0; }
+        }
+
+        private bool ExecuteLongTask()
+        {
+            try
+            {
+                FalseAnswersValue.Content = Handler.FalseAnswers;
+                CorrectAnswersValue.Content = Handler.CorrectAnswers;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
         }
 
         private void PercentageValue_Initialized(object sender, EventArgs e)

@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# IDE0002: Simplify Member Access
+dotnet_diagnostic.IDE0002.severity = silent
+
+# CA1707: Remove the underscores from assembly name Math_Trainer.
+dotnet_diagnostic.CA1707.severity = suggestion

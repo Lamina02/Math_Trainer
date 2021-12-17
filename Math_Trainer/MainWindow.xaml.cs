@@ -36,7 +36,7 @@ namespace MathTrainerVC19
 
             if (mTrainer.SetTrainerWindowState == true)
             {
-                //mResults.ShowDialog();
+                mResults.ShowDialog();
                 if (mResults.SetResultsWindowState == true)
                 {
                     goto START;

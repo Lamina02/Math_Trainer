@@ -24,8 +24,8 @@
             <Math_Trainer_VC19:NumericTextBox x:Name="Result_Input_Box" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Text="" FontSize="36" Margin="9" Width="230.192" Height="60.9" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="#FF6D9BD3" Foreground="#FF316EB8" TextAlignment="Center" KeyDown="Result_Input_Box_KeyDown" TextChanged="Result_Input_Box_TextChanged" />
         </Border>
         <Label x:Name="lblScore" Content="0" HorizontalAlignment="Center" Margin="146.104,105.573,17.791,0" VerticalAlignment="Top" FontSize="24" Height="39.247" Width="113.297" ScrollViewer.VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft"/>
-        <Button Content="Show Result" HorizontalAlignment="Left" Margin="34.083,358.172,0,0" VerticalAlignment="Top" Width="91.272" Height="35.142" Click="BtnShowResults_Click"/>
-        <Button Content="New Training" HorizontalAlignment="Left" Margin="145.078,358.172,0,0" VerticalAlignment="Top" Width="91.272" Height="35.142" Click="BtnNewTraining_Click"/>
+        <Button Content="Results" HorizontalAlignment="Left" Margin="34.083,358.172,0,0" VerticalAlignment="Top" Width="91.272" Height="35.142" Click="BtnShowResults_Click"/>
+        <Button Content="Skip" HorizontalAlignment="Left" Margin="145.078,358.172,0,0" VerticalAlignment="Top" Width="91.272" Height="35.142" Click="BtnNewTraining_Click"/>
         <Label x:Name="lblTime_Text" Content="Time Left" HorizontalAlignment="Left" Margin="10,88.134,0,0" VerticalAlignment="Top" Foreground="#FFAEAEAE"/>
     </Grid>
 </Window>
